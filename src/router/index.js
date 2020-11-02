@@ -8,7 +8,7 @@ Vue.use(VueRouter);
 const routes = [
     {
         name: 'Chat',
-        path: '/chat',
+        path: '/',
         component: Chat
     },
     {
