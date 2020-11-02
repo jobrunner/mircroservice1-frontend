@@ -1,12 +1,14 @@
 <template>
     <v-snackbar
         v-model="show"
-        :timeout="timeout"
+        timeout="-1"
+        color="error"
     >
         {{ message }}
         <template v-slot:action="{ attrs }">
             <v-btn
-                color="blue"
+                color="black"
+                outlined
                 text
                 v-bind="attrs"
                 @click="show = false"

@@ -42,15 +42,26 @@
         </v-card-text>
         <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn :color="buttonColor" @click="updateSettings(webhookUrl, webhookSecret)">Save</v-btn>
+            <v-btn 
+                :color="buttonColor" 
+                @click="updateSettings(webhookUrl, webhookSecret)"
+                :loading="isLoading"
+            >
+                Save
+            </v-btn>
         </v-card-actions>
+        <ErrorSnackbar />
     </v-card>
 </template>
 
 <script>
 import store from '@/store'
+import ErrorSnackbar from '@/components/ErrorSnackbar'
 
 export default {
+    components: {
+        ErrorSnackbar
+    },
     computed: {
         webhookUrl() {
             return store.state.settings.webhook.url
