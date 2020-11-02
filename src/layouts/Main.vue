@@ -51,7 +51,7 @@ export default {
         //     inset: false,
         // },
         items: [
-            { title: 'Chat', icon: 'mdi-chat-processing-outline', to: "/chat"},
+            { title: 'Chat', icon: 'mdi-chat-processing-outline', to: "/"},
             { title: 'Settings', icon: 'mdi-cog', to: "/settings"},
         ],
     })
