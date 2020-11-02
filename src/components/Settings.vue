@@ -61,9 +61,6 @@ export default {
         buttonColor() {
             return store.state.settings.isStored === true ? "normal" : "primary"
         },
-        // isStored() {
-        //     return store.state.settings.isStored
-        // },
         isLoading() {
             return store.state.settings.isLoading
         },
@@ -77,15 +74,12 @@ export default {
 
     methods: {
         updateWebhookUrl(url) {
-            console.log("updateUrl", url)
             store.dispatch("settings/setWebhookUrl", url)
         },
         updateWebhookSecret(secret) {
-            console.log("updateSecret", secret)
             store.dispatch("settings/setWebhookSecret", secret)
         },
         updateSettings(url, secret) {
-            console.log("updateSettings", url, secret)
             store.dispatch("settings/updateSettings", {
                 webhook: {
                     url: url, 

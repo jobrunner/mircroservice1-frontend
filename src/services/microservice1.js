@@ -18,7 +18,7 @@ export default {
                     resolve(response.data)
                 })
                 .catch(error => {
-                    console.log("service/microservice1 sendMessage catch: ", error.response.status)
+                    console.log("service/microservice1 sendMessage catch: ", error.response.status || error)
                     reject(error)
                 })
         })
@@ -48,4 +48,3 @@ export default {
         })
     }
 }
-

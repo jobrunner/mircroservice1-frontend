@@ -8,10 +8,6 @@ Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== "production"
 
-const defaultState = () => {
-    return {}
-}
-
 const modules = {
     settings,
     message,
@@ -20,24 +16,17 @@ const modules = {
 
 const getters = {
     isReachable: state => {
-        return state.settings.webhookIsReachable 
-               && state.settings.webhookSecretIsValid
-               && state.message.isAvailable
+        return (state.settings.isWebhookUrlReachable === true) 
+            && (state.settings.isWebhookSecretIsValid === true)
+            && (state.message.isAvailable === true)
     }
 }
-
-const actions = {}
-
-const mutations = {}
 
 const store = new Vuex.Store({
     namespaced: true,
     strict: debug,
-    state: defaultState,
     modules,
     getters,
-    actions,
-    mutations
 })
 
 export default store

@@ -70,23 +70,21 @@ export default {
         message: '',
         messages: [],
         isLoading: false,
-        isAvailable: true,
         firstname: "Vorname",
         lastname: "Nachname"
     }),
     computed: {
         isReachable() {
-            return (store.state.settings.isWebhookUrlReachable === true) 
-                && (store.state.settings.isWebhookSecretIsValid === true)
-                && (store.state.message.isAvailable === true)
+            return store.getters.isReachable
         }
     },
     methods: {
         sendMessage() {
-
+            
+            // Todo: better to push message to store and let a action fire the services.
             // store.dispatch("message/sendMessage", {message: this.message})
 
-            if (!this.message || !this.isAvailable) {
+            if (!this.message || !this.isReachable) {
                 return
             }
 
@@ -115,8 +113,8 @@ export default {
     },
     
     created() {
-        // We send a silent message to check wheter the bot is reachable
-        store.dispatch("message/sendMessage", {message: "ping"})
+        // Load defaults and set the stage
+        store.dispatch("settings/loadSettings")
     }
 
 }
